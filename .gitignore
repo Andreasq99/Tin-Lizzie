@@ -1,3 +1,4 @@
 .vs_code/
 package-lock.json
 node_modules/
+.env
