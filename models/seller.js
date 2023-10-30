@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/connection');
+const Customer = require('./customer');
 
 const Seller = sequelize.define('seller', {
   first_name: Sequelize.STRING,
@@ -11,4 +12,5 @@ const Seller = sequelize.define('seller', {
   password: Sequelize.STRING,
 });
 
+Seller.belongsTo(Customer);
 module.exports = Seller;
