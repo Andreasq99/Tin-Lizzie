@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/connection');
 
 const CarMetrics = sequelize.define('car_metrics', {
   views: Sequelize.INTEGER,
