@@ -1,20 +1,40 @@
-// In your app.js or main file
-const Sequelize = require('sequelize');
+// Import necessary modules
+const express = require('express');
+const sequelize = require('./config/connection'); // Import the sequelize object from connection.js
 
-// const sequelize = new Sequelize('your_database_name', 'your_username', 'your_password', {
-//   host: 'localhost',
-//   dialect: 'mysql',
-//   // Other configuration options if needed
-// });
+// Create an Express application
+const app = express();
 
-// Test the database connection
+// Define a port for your server
+const PORT = process.env.PORT || 3000;
+
+// Middleware setup (you can add more middleware as needed)
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Define your routes (import and use your route files here)
+const customerRoutes = require('./routes/customer-routes');
+const vehicleRoutes = require('./routes/vehicle-routes');
+const buyerRoutes = require('./routes/buyer-routes');
+const sellerRoutes = require('./routes/seller-routes');
+const carMetricsRoutes = require('./routes/carMetrics-routes');
+
+
+app.use('/api/customers', customerRoutes);
+app.use('/api/vehicles', vehicleRoutes);
+app.use('/api/sellers', sellerRoutes);
+app.use('/api/carmetrics', carMetricsRoutes);
+app.use('/api/buyers', buyerRoutes);
+
+// Start the Express server after the database connection is established
 sequelize
-  .authenticate()
+  .sync() // Sync your database models with the database
   .then(() => {
-    console.log('Database connection has been established successfully.');
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
   })
-  .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+  .catch((error) => {
+    console.error('Error connecting to the database:', error);
   });
 
-module.exports = sequelize;

@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/connection');
 
 const Vehicle = sequelize.define('vehicle', {
   vehicle_type: Sequelize.ENUM('Car', 'Boat', 'Motorcycle'), // Add a field for vehicle type
