@@ -22,7 +22,6 @@ CREATE TABLE IF NOT EXISTS Users (
 );
 
 -- Create the Vehicle table
--- Create the Vehicle table
 CREATE TABLE IF NOT EXISTS Vehicles (
   id INT AUTO_INCREMENT PRIMARY KEY,
   make VARCHAR(255) NOT NULL,
@@ -35,6 +34,8 @@ CREATE TABLE IF NOT EXISTS Vehicles (
   description TEXT,
   -- Add the 'image' field to store the image data
   image BLOB,
+  user_id INT
+  FOREIGN KEY (user_id) REFERENCES Users(id) ON DELETE CASCADE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
