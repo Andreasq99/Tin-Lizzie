@@ -4,61 +4,39 @@ DROP DATABASE IF EXISTS tinlizzie_db;
 CREATE DATABASE tinlizzie_db;
 
 use tinlizzie_db;
--- Create the 'buyer' table
-CREATE TABLE buyer (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    zip_code VARCHAR(10),
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+
+-- Create the User table
+CREATE TABLE IF NOT EXISTS Users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  username VARCHAR(255) NOT NULL UNIQUE,
+  email VARCHAR(255) NOT NULL UNIQUE,
+  password VARCHAR(255) NOT NULL,
+  fullName VARCHAR(255) NOT NULL,
+  street VARCHAR(255),
+  city VARCHAR(255),
+  state VARCHAR(255),
+  zip VARCHAR(10),
+  phoneNumber VARCHAR(20),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Create the 'seller' table
-CREATE TABLE seller (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+-- Create the Vehicle table
+-- Create the Vehicle table
+CREATE TABLE IF NOT EXISTS Vehicles (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  make VARCHAR(255) NOT NULL,
+  model VARCHAR(255) NOT NULL,
+  year INT NOT NULL,
+  price DECIMAL(10, 2) NOT NULL,
+  mileage INT NOT NULL,
+  color VARCHAR(255),
+  condition ENUM('New', 'Used', 'Certified Pre-Owned') NOT NULL,
+  description TEXT,
+  -- Add the 'image' field to store the image data
+  image BLOB,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
--- Create the 'vehicle' table
-CREATE TABLE vehicle (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    make VARCHAR(255) NOT NULL,
-    model VARCHAR(255) NOT NULL,
-    year INT,
-    price DECIMAL(10, 2),
-    description TEXT,
-    imageUrl VARCHAR(255)
-);
 
--- Create the 'carmetrics' table
-CREATE TABLE carmetrics (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    vehicleId INT NOT NULL,
-    mileage INT,
-    fuelEfficiency DECIMAL(5, 2),
-    FOREIGN KEY (vehicleId) REFERENCES vehicle(id)
-);
-
--- Create the 'customer' table
-CREATE TABLE customers (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    first_name VARCHAR(255) NOT NULL,
-    last_name VARCHAR(255) NOT NULL,
-    zip_code VARCHAR(10),
-    email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
-);
-
--- Create the 'buyerlikes' table
-CREATE TABLE buyerlikes (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    buyerId INT NOT NULL,
-    vehicleId INT NOT NULL,
-    liked BOOLEAN NOT NULL,
-    FOREIGN KEY (buyerId) REFERENCES buyer(id),
-    FOREIGN KEY (vehicleId) REFERENCES vehicle(id)
-);
