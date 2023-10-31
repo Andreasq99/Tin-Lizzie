@@ -3,6 +3,11 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('./sequelize'); // Import your Sequelize instance
 
 const Vehicle = sequelize.define('Vehicle', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true, // Specify this field as the primary key
+    autoIncrement: true, // Enable auto-incrementing for the primary key
+  },
   make: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -33,6 +38,13 @@ const Vehicle = sequelize.define('Vehicle', {
   description: {
     type: DataTypes.TEXT, // Store a longer description as text
   },
+  user_id: {
+    type: DataTypes.INTEGER, 
+    references: {
+      model: 'user', 
+      key: 'id', 
+    },
+  }, // Corrected placement of closing curly bracket
   // Add more vehicle-specific fields as needed
 });
 

@@ -1,5 +1,5 @@
 const { faker } = require('@faker-js/faker'); 
-const { User, Vehicle } = require('./models'); 
+const { User, Vehicle } = require('../models'); 
 
 async function seedData() {
   // Seed User data
@@ -8,11 +8,11 @@ async function seedData() {
       username: faker.internet.userName(),
       email: faker.internet.email(),
       password: faker.internet.password(),
-      fullName: faker.name.findName(),
-      street: faker.address.streetAddress(),
-      city: faker.address.city(),
-      state: faker.address.stateAbbr(),
-      zip: faker.address.zipCode(),
+      fullName: faker.person.findName(),
+      street: faker.location.streetAddress(),
+      city: faker.location.city(),
+      state: faker.location.state(),
+      zip: faker.location.zipCode(),
       phoneNumber: faker.phone.phoneNumber(),
     });
   }
@@ -22,11 +22,11 @@ async function seedData() {
     await Vehicle.create({
       make: faker.vehicle.manufacturer(),
       model: faker.vehicle.model(),
-      year: faker.datatype.number({ min: 2000, max: 2023 }),
-      price: faker.random.number({ min: 5000, max: 50000 }),
-      mileage: faker.datatype.number({ min: 0, max: 150000 }),
+      year: faker.datatype.int({ min: 2000, max: 2023 }),
+      price: faker.ecommerce.price({ min: 100, max: 100000 }),
+      mileage: faker.number({ min: 0, max: 150000 }),
       color: faker.vehicle.color(),
-      condition: faker.random.arrayElement(['New', 'Used', 'Certified Pre-Owned']),
+      condition: faker.arrayElement(['New', 'Used', 'Certified Pre-Owned']),
       description: faker.lorem.sentence(),
     });
   }
