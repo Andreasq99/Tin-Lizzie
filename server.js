@@ -2,8 +2,8 @@ const express = require('express');
 const app = express();
 
 // Import user and vehicle routes
-const userRoutes = require('./routes/user-routes');
-const vehicleRoutes = require('./routes/vehicle-routes');
+const userRoutes = require('./controllers/routes/user-routes');
+const vehicleRoutes = require('./controllers/routes/vehicle-routes');
 
 app.use(express.json()); // Enable JSON request body parsing
 

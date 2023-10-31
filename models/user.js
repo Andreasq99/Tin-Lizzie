@@ -3,6 +3,11 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('./sequelize'); // Import your Sequelize instance
 
 const User = sequelize.define('User', {
+  id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true, // Specify this field as the primary key
+        autoIncrement: true, // Enable auto-incrementing for the primary key
+  },
   username: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -42,7 +47,7 @@ const User = sequelize.define('User', {
   },
   phoneNumber: {
     type: DataTypes.STRING,
-  },
+  },  
   // Add more user-specific fields as needed
 });
 
