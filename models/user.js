@@ -47,12 +47,20 @@ const User = sequelize.define('User', {
   },
   phone_number: {
     type: DataTypes.STRING,
-  },  
+  }, 
+  updated_at: {
+    type: DataTypes.DATE,
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+  },
+  created_at: {
+    type: DataTypes.DATE,
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+  }, 
   // Add more user-specific fields as needed
 },
 {
   sequelize,
-  timestamps: false,
+  timestamps: true,
   freezeTableName: true,
   underscored: true,
   modelName: 'user',
