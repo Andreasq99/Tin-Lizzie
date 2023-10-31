@@ -1,6 +1,6 @@
 // user.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelize'); // Import your Sequelize instance
+const sequelize = require('../config/connection'); // Import your Sequelize instance
 
 const User = sequelize.define('User', {
   id: {
@@ -25,11 +25,11 @@ const User = sequelize.define('User', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  firstName: {
+  first_name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  lastName: {
+  last_name: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -45,10 +45,18 @@ const User = sequelize.define('User', {
   zip: {
     type: DataTypes.STRING,
   },
-  phoneNumber: {
+  phone_number: {
     type: DataTypes.STRING,
   },  
   // Add more user-specific fields as needed
-});
+},
+{
+  sequelize,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: 'user',
+}
+);
 
 module.exports = User;

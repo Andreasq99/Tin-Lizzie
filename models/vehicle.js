@@ -1,6 +1,6 @@
 // vehicle.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelize'); // Import your Sequelize instance
+const sequelize = require('../config/connection'); // Import your Sequelize instance
 
 const Vehicle = sequelize.define('Vehicle', {
   id: {
@@ -46,6 +46,14 @@ const Vehicle = sequelize.define('Vehicle', {
     },
   }, // Corrected placement of closing curly bracket
   // Add more vehicle-specific fields as needed
-});
+},
+{
+  sequelize,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: 'vehicle',
+}
+);
 
 module.exports = Vehicle;
