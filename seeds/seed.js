@@ -1,5 +1,5 @@
 const { User, Vehicle, VehicleImage } = require('../models');
-const faker = require('@faker-js/faker');
+const { faker } = require('@faker-js/faker');
 
 async function seedData() {
   try {
@@ -9,13 +9,13 @@ async function seedData() {
         username: faker.internet.userName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
-        first_name: faker.name.firstName(),
-        last_name: faker.name.lastName(),
-        street: faker.address.streetAddress(),
-        city: faker.address.city(),
-        state: faker.address.state(),
-        zip: faker.address.zipCode(),
-        phone_number: faker.phone.phoneNumber(),
+        first_name: faker.person.firstName(),
+        last_name: faker.person.lastName(),
+        street: faker.location.streetAddress(),
+        city: faker.location.city(),
+        state: faker.location.state(),
+        zip: faker.location.zipCode(),
+        phone_number: faker.phone.number(),
       });
     }
 
@@ -25,11 +25,11 @@ async function seedData() {
       const vehicle = await Vehicle.create({
         make: faker.vehicle.manufacturer(),
         model: model,
-        year: faker.datatype.number({ min: 1990, max: 2023 }),
+        year: faker.number.int({ min: 1990, max: 2023 }),
         price: faker.finance.amount({ min: 100, max: 100000 }),
-        mileage: faker.datatype.number({ min: 0, max: 500000 }),
+        mileage: faker.number.int({ min: 0, max: 500000 }),
         color: faker.vehicle.color(),
-        condition: faker.helpers.randomize(['New', 'Used', 'Certified Pre-Owned', 'Does Not Run', 'Parts Only']),
+        condition: faker.helpers.arrayElement(['New', 'Used', 'Certified Pre-Owned', 'Does Not Run', 'Parts Only']),
         description: faker.lorem.sentence(),
       });
 
@@ -37,7 +37,7 @@ async function seedData() {
       for (let j = 0; j < 3; j++) { // Create 3 images for each vehicle
         const image = await VehicleImage.create({
           vehicleId: vehicle.id,
-          imagePath: faker.image.imageUrl(400, 400, model.toLowerCase(), true), 
+          imagePath: faker.image.urlLoremFlickr({ category: model.toLowerCase()}),
           description: faker.lorem.sentence(),
         });
       }

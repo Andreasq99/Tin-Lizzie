@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('./sequelize'); // Import your Sequelize instance
+const sequelize = require('../config/connection'); // Import your Sequelize instance
 
 const VehicleImage = sequelize.define('VehicleImage', {
   id: {
@@ -22,6 +22,13 @@ const VehicleImage = sequelize.define('VehicleImage', {
     type: DataTypes.DATE,
     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
   },
-});
-
+},
+{
+  sequelize,
+  timestamps: false,
+  freezeTableName: true,
+  underscored: true,
+  modelName: 'vehicleImage',
+}
+);
 module.exports = VehicleImage;
