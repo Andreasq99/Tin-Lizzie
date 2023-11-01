@@ -22,6 +22,9 @@ async function seedData() {
     // Seed Vehicle data
     for (let i = 0; i < 30; i++) {
       const model = faker.vehicle.model();
+      const validTypes = ['car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar'];
+      const defaultType = 'car'; // Set a default type
+      const type = faker.vehicle.type(); // Generate a random vehicle type
       const vehicle = await Vehicle.create({
         make: faker.vehicle.manufacturer(),
         model: model,
@@ -31,13 +34,15 @@ async function seedData() {
         color: faker.vehicle.color(),
         condition: faker.helpers.arrayElement(['New', 'Used', 'Certified Pre-Owned', 'Does Not Run', 'Parts Only']),
         description: faker.lorem.sentence(),
+        type: validTypes.includes(type) ? type : defaultType,
       });
 
       // Create images associated with the vehicle
       for (let j = 0; j < 3; j++) { // Create 3 images for each vehicle
+        const imagePathCategory = type
         const image = await VehicleImage.create({
           vehicleId: vehicle.id,
-          imagePath: faker.image.urlLoremFlickr({ category: model.toLowerCase()}),
+          imagePath: faker.image.urlLoremFlickr({ category: imagePathCategory }),
           description: faker.lorem.sentence(),
         });
       }

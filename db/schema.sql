@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS User (
 -- Create the Vehicle table
 CREATE TABLE IF NOT EXISTS Vehicle (
   id INT AUTO_INCREMENT PRIMARY KEY,
+  type ENUM('car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar', 'Coupe'),
   make VARCHAR(255) NOT NULL,
   model VARCHAR(255) NOT NULL,
   year INT NOT NULL,
@@ -34,7 +35,9 @@ CREATE TABLE IF NOT EXISTS Vehicle (
   `condition` VARCHAR(65) NOT NULL,
   description TEXT,
   user_id INT,
-  FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE
+  FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
 -- Create the VehicleImages table to store vehicle images
@@ -43,6 +46,8 @@ CREATE TABLE IF NOT EXISTS VehicleImage (
   vehicle_id INT NOT NULL,
   image_path VARCHAR(255) NOT NULL,
   description TEXT,
+  FOREIGN KEY (vehicle_id) REFERENCES Vehicle(id) ON DELETE CASCADE,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (vehicle_id) REFERENCES Vehicle(id) ON DELETE CASCADE
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  
 );

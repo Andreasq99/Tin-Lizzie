@@ -18,14 +18,14 @@ const VehicleImage = sequelize.define('VehicleImage', {
   description: {
     type: DataTypes.TEXT,
   },
-  createdAt: {
+  created_at: {
     type: DataTypes.DATE,
     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
   },
 },
 {
   sequelize,
-  timestamps: false,
+  timestamps: true,
   freezeTableName: true,
   underscored: true,
   modelName: 'vehicleImage',

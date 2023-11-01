@@ -38,6 +38,18 @@ const Vehicle = sequelize.define('Vehicle', {
   description: {
     type: DataTypes.TEXT, // Store a longer description as text
   },
+  type: {
+    type: DataTypes.ENUM('car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar'),
+    allowNull: false,
+  },
+  updated_at: {
+    type: DataTypes.DATE,
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+  },
+  created_at: {
+    type: DataTypes.DATE,
+    defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
+  },
   user_id: {
     type: DataTypes.INTEGER, 
     references: {
@@ -49,7 +61,7 @@ const Vehicle = sequelize.define('Vehicle', {
 },
 {
   sequelize,
-  timestamps: false,
+  timestamps: true,
   freezeTableName: true,
   underscored: true,
   modelName: 'vehicle',
