@@ -1,7 +1,7 @@
 // user-routes.js
 const express = require('express');
 const router = express.Router();
-const { User } = require('../../models');
+const { User } = require('../models');
 
 // Define routes for user resource
 router.get('/', async (req, res) => {
