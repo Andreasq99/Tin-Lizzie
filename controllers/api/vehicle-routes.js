@@ -1,7 +1,7 @@
 // vehicle-routes.js
 const express = require('express');
 const router = express.Router();
-const { Vehicle, VehicleImage } = require('../models');
+const { Vehicle, VehicleImage } = require('../../models');
 
 // Define routes for vehicle resource
 router.get('/', async (req, res) => {
@@ -24,6 +24,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+
+router.get('/:id', async (req,res)=>{
+  try{
+    const dbVehicleData = await Vehicle.findByPk(req.params.id);
+    const vehicle = dbVehicleData.get({plain:true});
+    res.send(vehicle);
+  } catch(err){
+    res.status(400).json(err);
+  }
+});
 // Add more vehicle-related routes as needed
 
 module.exports = router;

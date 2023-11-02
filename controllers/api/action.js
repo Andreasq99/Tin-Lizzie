@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Love, View, Like, Vehicle } = require('../models');
+const { Love, View, Like, Vehicle } = require('../../models');
 
 // Create a like for a vehicle
 router.post('/api/vehicles/:vehicleId/likes', async (req, res) => {
