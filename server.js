@@ -4,8 +4,8 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 
-const userRoutes = require('./controllers/user-routes');
-const vehicleRoutes = require('./controllers/vehicle-routes');
+const userRoutes = require('./controllers/api/user-routes');
+const vehicleRoutes = require('./controllers/api/vehicle-routes');
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');

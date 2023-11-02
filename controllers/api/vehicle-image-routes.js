@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const VehicleImage = require('../models/vehicleImage');
+const VehicleImage = require('../../models/vehicleImage');
 
 // Create a new vehicle image
 router.post('/', async (req, res) => {
