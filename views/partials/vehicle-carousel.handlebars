@@ -1,0 +1,26 @@
+<div id=“vehicle-carousel-{{ vehicle.id }}” class=“carousel slide” data-ride=“carousel”>
+    <ol class=“carousel-indicators”>
+      {{#each vehicle.VehicleImages}}
+      <li data-target=“#vehicle-carousel-{{ vehicle.id }}” data-slide-to=“{{ @index }}” class=“{{#if @index_eq 0}}active{{/if}}“></li>
+      {{/each}}
+    </ol>
+    <div class=“carousel-inner”>
+      {{#each vehicle.VehicleImages}}
+      <div class=“carousel-item {{#if @index_eq 0}}active{{/if}}“>
+        <img src=“{{ this.imagePath }}” class="d-block w-100" alt=“Vehicle Image”>
+        <div class=“carousel-caption”>
+          <p>{{ this.description }}</p>
+        </div>
+      </div>
+      {{/each}}
+    </div>
+    <a class=“carousel-control-prev” href=“#vehicle-carousel-{{ vehicle.id }}” role=“button” data-slide=“prev”>
+      <span class=“carousel-control-prev-icon” aria-hidden=“true”></span>
+      <span class=“sr-only”>Previous</span>
+    </a>
+    <a class=“carousel-control-next” href=“#vehicle-carousel-{{ vehicle.id }}” role=“button” data-slide=“next”>
+      <span class=“carousel-control-next-icon” aria-hidden=“true”></span>
+      <span class=“sr-only”>Next</span>
+    </a>
+  </div>
+</div> 
