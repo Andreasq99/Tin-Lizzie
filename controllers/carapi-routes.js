@@ -15,7 +15,7 @@ function authenticate() {
         api_secret: API_SECRET,
       });
 
-      token = response;
+      token = response.data.token;
       console.log(token);
       res.json({ token });
     } catch (err) {
@@ -45,7 +45,4 @@ router.get("/decode/:vin", async (req, res) => {
   res.json(data);
 });
 
-module.exports = {
-  router: router,
-  token: token,
-};
+module.exports = router;

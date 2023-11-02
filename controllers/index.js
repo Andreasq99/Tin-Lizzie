@@ -12,10 +12,10 @@ const vehicle = require('./vehicle-routes');
 // Define routes and associate them with controllers
 router.use('/', homeRoutes);
 router.use('/action', action);
-router.use('/carapi', action);
-router.use('/user', action);
-router.use('/vehicleImage', action);
-router.use('/vehicle', action);
+router.use('/carapi', carapi);
+router.use('/user', user);
+router.use('/vehicleImage', vehicleImage);
+router.use('/vehicle', vehicle);
 
 
 
