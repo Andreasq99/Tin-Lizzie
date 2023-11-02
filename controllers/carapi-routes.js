@@ -28,13 +28,13 @@ async function getDecode(vin) {
     return response.data;
   } catch (err) {
     console.log(err);
-    //await authenticate();
-    //return await getDecode(vin);
+    await authenticate();
+    return await getDecode(vin);
   }
 }
 
 router.get("/decode/:vin", async (req, res) => {
-  if (!token) await authenticate();
+  // if (!token) await authenticate();
   const data = await getDecode(req.params.vin);
   console.log(data);
   res.json(data);
