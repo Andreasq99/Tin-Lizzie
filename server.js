@@ -33,8 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-app.use('/users', userRoutes);
-app.use('/vehicles', vehicleRoutes);
+//app.use('/users', userRoutes);
+//app.use('/vehicles', vehicleRoutes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening on port 3001'));
