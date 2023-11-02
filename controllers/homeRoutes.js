@@ -6,6 +6,10 @@ router.get('/', (req, res) => {
   res.render('homepage');
 });
 
+router.get('/login',(req,res)=>{
+  res.render('login');
+});
+
 router.get('/vehicle/:id', async (req,res)=>{
   try{
     const dbVehicleData = await Vehicle.findByPk(req.params.id);
