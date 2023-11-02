@@ -1,28 +1,21 @@
 const express = require("express");
 const axios = require("axios");
-
+require('dotenv').config();
 const router = express.Router();
 
 let token;
 
-function authenticate() {
-  router.post("/auth", async (req, res) => {
-    const { API_KEY, API_SECRET } = req.body;
-
+async function authenticate() {
     try {
       const response = await axios.post("https://carapi.app/api/auth/login", {
-        api_token: API_KEY,
-        api_secret: API_SECRET,
+        api_token: process.env.API_KEY,
+        api_secret: process.env.API_SECRET,
       });
 
-      token = response;
-      console.log(token);
-      res.json({ token });
+      token = response.data;
     } catch (err) {
-      console.error(err);
-      res.status(401).send("auth failed");
+      console.error('There is an error');
     }
-  });
 }
 
 async function getDecode(vin) {
@@ -31,21 +24,20 @@ async function getDecode(vin) {
     const response = await axios.get(url, {
       headers: { Authorization: `Bearer ${token}` },
     });
-    console.log(response);
-    return response;
+    console.log(response.data);
+    return response.data;
   } catch (err) {
     console.log(err);
-    authenticate();
-    return await getDecode(vin);
+    //await authenticate();
+    //return await getDecode(vin);
   }
 }
 
 router.get("/decode/:vin", async (req, res) => {
+  if (!token) await authenticate();
   const data = await getDecode(req.params.vin);
+  console.log(data);
   res.json(data);
 });
 
-module.exports = {
-  router: router,
-  token: token,
-};
+module.exports = router
