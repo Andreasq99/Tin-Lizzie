@@ -14,7 +14,6 @@ async function clearTables() {
   }
 }
 
-
 async function seedData() {
   try {
     // Seed User data
@@ -40,9 +39,9 @@ async function seedData() {
       const randomUser = faker.helpers.arrayElement(userArray); // Randomly select a user from userArray
       const model = faker.vehicle.model();
       const make = faker.vehicle.manufacturer();
+      const type = faker.vehicle.type(); 
       const validTypes = ['car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar'];
       const defaultType = 'car'; // Set a default type
-      const type = faker.vehicle.type(); // Generate a random vehicle type
       const vehicle = await Vehicle.create({
         make: make,
         model: model,
@@ -72,6 +71,5 @@ async function seedData() {
     console.error('Error seeding data:', error);
   }
 }
-
 // Call the seedData function
 seedData();
