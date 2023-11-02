@@ -2,6 +2,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/connection'); // Import your Sequelize instance
 
+
 const Vehicle = sequelize.define('Vehicle', {
   id: {
     type: DataTypes.INTEGER,
