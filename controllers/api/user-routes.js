@@ -1,12 +1,12 @@
 // user-routes.js
 const express = require('express');
 const router = express.Router();
-const { User } = require('../../models');
+const { User, Vehicle } = require('../../models');
 
 // Define routes for user resource
 router.get('/', async (req, res) => {
   try {
-    const users = await User.findAll();
+    const users = await User.findAll({ include: Vehicle, });
     res.json(users);
   } catch (error) {
     console.error('Error fetching users:', error);
