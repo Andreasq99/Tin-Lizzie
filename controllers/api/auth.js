@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../models'); // Import your User model
+const { User } = require('../../models'); // Import your User model
 const bcrypt = require('bcrypt');
 const { check, validationResult } = require('express-validator');
 
