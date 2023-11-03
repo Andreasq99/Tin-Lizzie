@@ -4,12 +4,10 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 
-const userRoutes = require('./controllers/api/user-routes');
-const vehicleRoutes = require('./controllers/api/vehicle-routes');
-
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
+const auth = require('./utils/auth');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -30,6 +28,7 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(auth);
 
 app.use(routes);
 
