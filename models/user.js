@@ -1,7 +1,5 @@
-// user.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/connection'); // Import your Sequelize instance
-const ZipCode = require('./zipcode'); // Import the ZipCode model
+const sequelize = require('../config/connection');
 
 const User = sequelize.define('User', {
   id: {
@@ -57,20 +55,6 @@ const User = sequelize.define('User', {
     type: DataTypes.DATE,
     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
   },
-  zipCode: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    references: {
-      model: ZipCode, // Reference the ZipCode model
-      key: 'code', // This should match the primary key in the ZipCode model
-    },
-  },
-}, {
-  sequelize,
-  timestamps: true,
-  freezeTableName: true,
-  underscored: true,
-  modelName: 'user',
 });
 
 module.exports = User;
