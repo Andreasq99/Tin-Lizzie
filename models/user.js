@@ -1,12 +1,13 @@
 // user.js
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/connection'); // Import your Sequelize instance
+const ZipCode = require('./zipcode'); // Import the ZipCode model
 
 const User = sequelize.define('User', {
   id: {
-        type: DataTypes.INTEGER,
-        primaryKey: true, // Specify this field as the primary key
-        autoIncrement: true, // Enable auto-incrementing for the primary key
+    type: DataTypes.INTEGER,
+    primaryKey: true, // Specify this field as the primary key
+    autoIncrement: true, // Enable auto-incrementing for the primary key
   },
   username: {
     type: DataTypes.STRING,
@@ -47,7 +48,7 @@ const User = sequelize.define('User', {
   },
   phone_number: {
     type: DataTypes.STRING,
-  }, 
+  },
   updated_at: {
     type: DataTypes.DATE,
     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
@@ -55,16 +56,21 @@ const User = sequelize.define('User', {
   created_at: {
     type: DataTypes.DATE,
     defaultValue: sequelize.literal('CURRENT_TIMESTAMP'),
-  }, 
-  // Add more user-specific fields as needed
-},
-{
+  },
+  zipCode: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    references: {
+      model: ZipCode, // Reference the ZipCode model
+      key: 'code', // This should match the primary key in the ZipCode model
+    },
+  },
+}, {
   sequelize,
   timestamps: true,
   freezeTableName: true,
   underscored: true,
   modelName: 'user',
-}
-);
+});
 
 module.exports = User;
