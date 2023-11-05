@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beater Meter</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <canvas id="barChart"></canvas>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const value = {{vehicle.rating}};
+            const color = function (value) {
+                    if (this.number >= 80) {
+                        return "rgba(75, 192, 192, 0.2)"; // Green
+                    } else if (this.number >= 50 && this.number < 80) {
+                        return "rgba(255, 206, 86, 0.2)"; // Yellow
+                    } else {
+                        return "rgba(255, 99, 71, 0.2)"; // Red
+                    }
+                }
+
+            const chartData = {
+                labels: ["Value"],
+                datasets: [
+                    {
+                        data: [value],
+                        backgroundColor: color();
+                        borderColor: color();
+                        borderWidth: 1
+                    }
+                ]
+            };
+
+            const chartCanvas = document.getElementById("barChart").getContext("2d");
+
+            new Chart(chartCanvas, {
+                type: "horizontalBar",
+                data: chartData,
+                options: {
+                    title: {
+                        display: true,
+                        text: "Beater Meter"
+                    },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }
+                        ]
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
