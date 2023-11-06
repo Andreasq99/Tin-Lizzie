@@ -38,7 +38,7 @@ const Vehicle = sequelize.define('Vehicle', {
   },
   vin: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   rating: {
     type: DataTypes.INTEGER,
@@ -65,7 +65,8 @@ const Vehicle = sequelize.define('Vehicle', {
       model: 'user', 
       key: 'id', 
     },
-  }, 
+  }, // Corrected placement of closing curly bracket
+  // Add more vehicle-specific fields as needed
 },
 {
   sequelize,

@@ -43,6 +43,27 @@ router.get('/:id', async (req,res)=>{
     res.status(400).json(err);
   }
 });
+
+router.get('/card/:id', async (req,res)=>{
+  try{
+    const dbVehicleData = await Vehicle.findByPk(req.params.id, {
+      include: [
+        {
+        model: VehicleImage,
+        attributes: [
+          'imagePath',
+          'description',
+          ]
+        }
+      ],
+    });
+
+    const vehicleData = dbVehicleData.get({ plain: true });
+    res.send(vehicleData);
+  } catch (err) {
+    response.status(400).json(err);
+  }
+});
 // Add more vehicle-related routes as needed
 
 module.exports = router;
