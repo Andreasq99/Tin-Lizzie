@@ -36,6 +36,10 @@ const Vehicle = sequelize.define('Vehicle', {
     type: DataTypes.ENUM('New', 'Used', 'Certified Pre-Owned'), // Store condition as one of the specified options
     allowNull: false,
   },
+  vin: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   rating: {
     type: DataTypes.INTEGER,
     allowNull: true,

@@ -2,7 +2,9 @@
 <html>
 <head>
     <title>Beater Meter</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
 </head>
 <body>
     <canvas id="barChart"></canvas>
@@ -10,22 +12,22 @@
         document.addEventListener("DOMContentLoaded", () => {
             const value = {{vehicle.rating}};
             const color = function (value) {
-                    if (this.number >= 80) {
-                        return "rgba(75, 192, 192, 0.2)"; // Green
-                    } else if (this.number >= 50 && this.number < 80) {
-                        return "rgba(255, 206, 86, 0.2)"; // Yellow
+                    if (value >= 80) {
+                        return "rgba(75, 192, 192, 1)"; // Green
+                    } else if (value >= 50 && value < 80) {
+                        return "rgba(255, 206, 86, 1)"; // Yellow
                     } else {
-                        return "rgba(255, 99, 71, 0.2)"; // Red
+                        return "rgba(255, 99, 71, 1)"; // Red
                     }
                 }
 
             const chartData = {
-                labels: ["Value"],
+                labels: ["Beater?"],
                 datasets: [
                     {
                         data: [value],
-                        backgroundColor: color();
-                        borderColor: color();
+                        backgroundColor: color(value),
+                        borderColor: color(value),
                         borderWidth: 1
                     }
                 ]
@@ -48,7 +50,9 @@
                         xAxes: [
                             {
                                 ticks: {
-                                    beginAtZero: true
+                                    beginAtZero: true,
+                                    stepSize: 20,
+                                    max: 100,
                                 }
                             }
                         ]
