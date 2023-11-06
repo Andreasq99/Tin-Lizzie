@@ -46,18 +46,20 @@ async function seedData() {
         make: make,
         model: model,
         year: faker.number.int({ min: 1990, max: 2023 }),
+        vin: faker.vehicle.vin(),
+        rating: faker.number.int({ min: 0, max: 100 }),
         price: faker.finance.amount({ min: 100, max: 100000 }),
         mileage: faker.number.int({ min: 0, max: 500000 }),
         color: faker.vehicle.color(),
         condition: faker.helpers.arrayElement(['New', 'Used', 'Certified Pre-Owned', 'Does Not Run', 'Parts Only']),
         description: faker.lorem.sentence(),
         type: validTypes.includes(type) ? type : defaultType,
-        UserId: randomUser.id, // Associate the vehicle with a random user
+        UserId: randomUser.id, 
       });
 
       // Create images associated with the vehicle
-      for (let j = 0; j < 3; j++) { // Create 3 images for each vehicle
-        const imagePathCategory = make.replace(/\s/g, ''); // Remove spaces from type
+      for (let j = 0; j < 3; j++) { 
+        const imagePathCategory = make.replace(/\s/g, '');
         await VehicleImage.create({
           vehicleId: vehicle.id,
           imagePath: faker.image.urlLoremFlickr({ category: imagePathCategory }),

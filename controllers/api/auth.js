@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../../models'); // Import your User model
+const { User } = require('../../models');
 const bcrypt = require('bcrypt');
 const { check, validationResult } = require('express-validator');
 
 // Route to render the registration form
 router.get('/register', (req, res) => {
-  res.render('registration'); // Render your registration form (if using a view engine)
+  res.render('user-registration'); 
 });
 
 // Route to handle form submissions and create a new user
@@ -23,7 +23,6 @@ router.post(
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
-        // Return validation errors to the client
         return res.status(400).json({ errors: errors.array() });
       }
 

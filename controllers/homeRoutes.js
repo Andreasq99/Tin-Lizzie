@@ -35,5 +35,5 @@ router.get('/vehicle/:id', async (req,res)=>{
   }
 });
 
-// Export the router
+
 module.exports = router;

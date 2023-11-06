@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/connection'); // Import your Sequelize instance
+const sequelize = require('../config/connection'); 
 
 const View = sequelize.define('View', {
   id: {

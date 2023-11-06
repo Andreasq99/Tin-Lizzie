@@ -43,9 +43,8 @@ router.post('/api/vehicles/:vehicleId/likes', async (req, res) => {
 router.delete('/api/vehicles/:vehicleId/likes/:likeId', async (req, res) => {
   try {
     const { vehicleId, likeId } = req.params;
-    const { userId } = req.body; // Assuming you have user authentication
+    const { userId } = req.body; 
 
-    // Validate user and vehicle existence
     const vehicle = await Vehicle.findByPk(vehicleId);
     if (!vehicle) {
       return res.status(404).json({ error: 'Vehicle not found' });
@@ -83,7 +82,7 @@ router.delete('/api/vehicles/:vehicleId/likes/:likeId', async (req, res) => {
 router.post('/api/vehicles/:vehicleId/loves', async (req, res) => {
   try {
     const { vehicleId } = req.params;
-    const { userId } = req.body; // Assuming you have user authentication
+    const { userId } = req.body; 
 
     // Validate user and vehicle existence
     const vehicle = await Vehicle.findByPk(vehicleId);
@@ -121,7 +120,7 @@ router.post('/api/vehicles/:vehicleId/loves', async (req, res) => {
 router.delete('/api/vehicles/:vehicleId/loves/:loveId', async (req, res) => {
   try {
     const { vehicleId, loveId } = req.params;
-    const { userId } = req.body; // Assuming you have user authentication
+    const { userId } = req.body;
 
     // Validate user and vehicle existence
     const vehicle = await Vehicle.findByPk(vehicleId);
@@ -161,7 +160,7 @@ router.delete('/api/vehicles/:vehicleId/loves/:loveId', async (req, res) => {
 router.post('/api/vehicles/:vehicleId/views', async (req, res) => {
   try {
     const { vehicleId } = req.params;
-    const { userId } = req.body; // Assuming you have user authentication
+    const { userId } = req.body; 
 
     // Validate user and vehicle existence
     const vehicle = await Vehicle.findByPk(vehicleId);
