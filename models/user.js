@@ -4,8 +4,8 @@ const sequelize = require('../config/connection');
 const User = sequelize.define('User', {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true, // Specify this field as the primary key
-    autoIncrement: true, // Enable auto-incrementing for the primary key
+    primaryKey: true, 
+    autoIncrement: true, 
   },
   username: {
     type: DataTypes.STRING,
@@ -17,7 +17,7 @@ const User = sequelize.define('User', {
     allowNull: false,
     unique: true,
     validate: {
-      isEmail: true, // Ensure the email is a valid email address
+      isEmail: true, 
     },
   },
   password: {

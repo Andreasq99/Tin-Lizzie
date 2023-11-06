@@ -24,22 +24,22 @@ CREATE TABLE IF NOT EXISTS User (
 
 -- Vehicle table
 CREATE TABLE IF NOT EXISTS Vehicle (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  type ENUM('car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar', 'Coupe'),
-  make VARCHAR(255) NOT NULL,
-  model VARCHAR(255) NOT NULL,
-  year INT NOT NULL,
-  price DECIMAL(10, 2) NOT NULL,
-  mileage INT NOT NULL,
-  color VARCHAR(255),
-  `condition` VARCHAR(65) NOT NULL,
-  description TEXT,
-  user_id INT,
-  FOREIGN KEY (user_id) REFERENCES User(id) ON DELETE CASCADE,
-  likes INT DEFAULT 0,
-  loves INT DEFAULT 0,
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    make VARCHAR(255) NOT NULL,
+    model VARCHAR(255) NOT NULL,
+    year INT NOT NULL,
+    price DECIMAL(10, 2) NOT NULL,
+    mileage INT NOT NULL,
+    color VARCHAR(255),
+    `condition` ENUM('New', 'Used', 'Certified Pre-Owned') NOT NULL,
+    vin VARCHAR(255) NOT NULL,
+    rating INT,
+    description TEXT,
+    type ENUM('car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar') NOT NULL,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES User(id)
 );
 
 -- VehicleImages table to store vehicle images
@@ -84,4 +84,5 @@ CREATE TABLE IF NOT EXISTS View (
   updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (vehicleId) REFERENCES Vehicle(id) ON DELETE CASCADE
 );
+
 

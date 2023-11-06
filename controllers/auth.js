@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { User } = require('../../models');
+const { User } = require('../models'); 
 const bcrypt = require('bcrypt');
 const { check, validationResult } = require('express-validator');
 
@@ -23,6 +23,7 @@ router.post(
       const errors = validationResult(req);
 
       if (!errors.isEmpty()) {
+        // Return validation errors to the client
         return res.status(400).json({ errors: errors.array() });
       }
 
