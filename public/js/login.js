@@ -4,7 +4,7 @@ const loginHandler = async function (event){
     const email = document.querySelector('#email').value;
     const password = document.querySelector('#password').value;
     if(email && password){
-        const response = await fetch(/api/user-routes/login,{
+        const response = await fetch('/api/user-routes/login',{
             method: 'POST',
             body: JSON.stringify({email,password})
         });
@@ -13,3 +13,5 @@ const loginHandler = async function (event){
         }
     }
 }
+
+document.querySelector('#login').addEventListener('click', loginHandler)
