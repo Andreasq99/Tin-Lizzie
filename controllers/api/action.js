@@ -7,7 +7,6 @@ router.post('/api/vehicles/:vehicleId/likes', async (req, res) => {
   try {
     const { vehicleId } = req.params;
     const { userId } = req.body;
-    const { userId } = req.body; 
 
     const vehicle = await Vehicle.findByPk(vehicleId);
     if (!vehicle) {

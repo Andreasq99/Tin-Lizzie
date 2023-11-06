@@ -6,7 +6,7 @@ const { check, validationResult } = require('express-validator');
 
 // Route to render the registration form
 router.get('/register', (req, res) => {
-  res.render('registration'); 
+  res.render('user-registration'); 
 });
 
 // Route to handle form submissions and create a new user

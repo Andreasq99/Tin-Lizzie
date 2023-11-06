@@ -33,7 +33,7 @@ const Vehicle = sequelize.define('Vehicle', {
     type: DataTypes.STRING,
   },
   condition: {
-    type: DataTypes.ENUM('New', 'Used', 'Certified Pre-Owned'), 
+    type: DataTypes.ENUM('New', 'Used', 'Certified Pre-Owned', 'Does Not Run', 'Parts Only'), 
     allowNull: false,
   },
   vin: {
