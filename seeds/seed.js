@@ -20,7 +20,6 @@ async function seedData() {
     const userArray = [];
     for (let i = 0; i < 50; i++) {
       const user = await User.create({
-        username: faker.internet.userName(),
         email: faker.internet.email(),
         password: faker.internet.password(),
         first_name: faker.person.firstName(),

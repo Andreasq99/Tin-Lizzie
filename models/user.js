@@ -12,20 +12,15 @@ User.init(
   {
     id: {
       type: DataTypes.INTEGER,
-      primaryKey: true, // Specify this field as the primary key
-      autoIncrement: true, // Enable auto-incrementing for the primary key
-    },
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
+      primaryKey: true, 
+      autoIncrement: true, 
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       validate: {
-        isEmail: true, // Ensure the email is a valid email address
+        isEmail: true, 
       },
     },
     password: {
