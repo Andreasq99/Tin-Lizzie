@@ -1,3 +1,6 @@
+body {
+    background: #4c4c4c;
+}
 .gradient-custom {
     /* fallback for old browsers */
     background: #242323;
