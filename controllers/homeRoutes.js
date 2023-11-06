@@ -13,7 +13,7 @@ router.get('/login',(req,res)=>{
 });
 
 router.get('/registration', (req,res)=>{
-  res.render('registration');
+  res.render('user-registration');
 });
 
 router.get('/about',(req,res)=>{
@@ -35,5 +35,5 @@ router.get('/vehicle/:id', async (req,res)=>{
   }
 });
 
-// Export the router
+
 module.exports = router;

@@ -1,13 +1,13 @@
 // vehicle.js
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/connection'); // Import your Sequelize instance
+const sequelize = require('../config/connection'); 
 
 
 const Vehicle = sequelize.define('Vehicle', {
   id: {
     type: DataTypes.INTEGER,
-    primaryKey: true, // Specify this field as the primary key
-    autoIncrement: true, // Enable auto-incrementing for the primary key
+    primaryKey: true, 
+    autoIncrement: true, 
   },
   make: {
     type: DataTypes.STRING,
@@ -22,7 +22,7 @@ const Vehicle = sequelize.define('Vehicle', {
     allowNull: false,
   },
   price: {
-    type: DataTypes.DECIMAL(10, 2), // Store price as a decimal with 2 decimal places
+    type: DataTypes.DECIMAL(10, 2), 
     allowNull: false,
   },
   mileage: {
@@ -33,7 +33,7 @@ const Vehicle = sequelize.define('Vehicle', {
     type: DataTypes.STRING,
   },
   condition: {
-    type: DataTypes.ENUM('New', 'Used', 'Certified Pre-Owned'), // Store condition as one of the specified options
+    type: DataTypes.ENUM('New', 'Used', 'Certified Pre-Owned', 'Does Not Run', 'Parts Only'), 
     allowNull: false,
   },
   vin: {
@@ -45,7 +45,7 @@ const Vehicle = sequelize.define('Vehicle', {
     allowNull: true,
   },
   description: {
-    type: DataTypes.TEXT, // Store a longer description as text
+    type: DataTypes.TEXT, 
   },
   type: {
     type: DataTypes.ENUM('car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar'),
@@ -65,7 +65,6 @@ const Vehicle = sequelize.define('Vehicle', {
       model: 'user', 
       key: 'id', 
     },
-    
   }, // Corrected placement of closing curly bracket
   // Add more vehicle-specific fields as needed
 },

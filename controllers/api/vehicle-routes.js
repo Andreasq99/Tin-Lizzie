@@ -1,9 +1,18 @@
-// vehicle-routes.js
 const express = require('express');
 const router = express.Router();
 const { Vehicle, VehicleImage } = require('../../models');
 
-// Define routes for vehicle resource
+router.get('/partial/category', async (req, res) => {
+  try {
+    const vehicles = await Vehicle.findAll();
+    console.log(vehicles);
+    res.render('category', { vehicles });
+  } catch (error) {
+    console.error('Error fetching vehicles:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 router.get('/', async (req, res) => {
   try {
     const vehicles = await Vehicle.findAll({ include: VehicleImage, });
