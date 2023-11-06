@@ -34,6 +34,10 @@ router.get('/:id', async (req,res)=>{
     res.status(400).json(err);
   }
 });
+
+router.get('/card/:id', async (req,res)=>{
+  
+});
 // Add more vehicle-related routes as needed
 
 module.exports = router;
