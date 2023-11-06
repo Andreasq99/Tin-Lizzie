@@ -10,18 +10,35 @@ async function registrationHandler(event) {
   const condition = document.querySelector("#condition").value;
   const mileage = document.querySelector("#mileage").value;
   const description = document.querySelector("#description").value;
+  
+  const userId = req.session.username;
 
   try {
     const response = await fetch("/api/auth", {
       method: "POST",
+      body: JSON.stringify({
+        vehicleMake,
+        vehicleModel,
+        year,
+        color,
+        vin,
+        price,
+        condition,
+        mileage,
+        description,
+        userId,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-    
+
     if (response.ok) {
       document.location.replace("/");
     }
   } catch (err) {
     console.error(err);
-    window.prompt('Please enter in all parts of the registration form.')
+    window.prompt("Please enter in all parts of the registration form.");
   }
 }
 

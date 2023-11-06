@@ -57,9 +57,9 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
       req.session.loggedIn = true;
+      req.session.username = req.body.username;
 
       res
         .status(200)
@@ -72,7 +72,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-  // When the user logs out, destroy the session
+
   if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();

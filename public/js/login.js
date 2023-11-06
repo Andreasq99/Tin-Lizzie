@@ -6,10 +6,15 @@ const loginHandler = async function (event){
     if(email && password){
         const response = await fetch('/api/user-routes/login',{
             method: 'POST',
-            body: JSON.stringify({email,password})
+            headers: {
+                'Content-Type': 'application/json'
+              },
+            body: JSON.stringify({email, password})
         });
         if(response.ok){
-            document.location.replace('/');
+            document.location.replace('/homepage');
+        } else {
+            window.prompt('incorrect username or password');
         }
     }
 }

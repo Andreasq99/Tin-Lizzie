@@ -5,7 +5,6 @@ const router = express.Router();
 const homeRoutes = require('./homeRoutes');
 const api = require('./api');
 const carapi = require('./carapi-routes');
-//const chatWithGPT = require('./chatgpt.js');
 
 // Define routes and associate them with controllers
 router.use('/', homeRoutes);

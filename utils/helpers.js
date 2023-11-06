@@ -7,11 +7,11 @@ class BeaterMeter {
 
   getBarColor() {
     if (this.number >= 80) {
-      return "rgba(75, 192, 192, 0.2)"; // Green
+      return "rgba(75, 192, 192, 0.2)"; // this makes it greenish
     } else if (this.number >= 50 && this.number < 80) {
-      return "rgba(255, 206, 86, 0.2)"; // Yellow
+      return "rgba(255, 206, 86, 0.2)"; // this makes it yellow
     } else {
-      return "rgba(255, 99, 71, 0.2)"; // Red
+      return "rgba(255, 99, 71, 0.2)"; // this makes it red
     }
   }
 
