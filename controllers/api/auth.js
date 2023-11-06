@@ -27,7 +27,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { first_name, last_name, email, password } = req.body;
+      const { first_name, last_name, email, password } = JSON.parse(req.body);
 
       // Check if the email is already registered
       const existingUser = await User.findOne({ where: { email } });
