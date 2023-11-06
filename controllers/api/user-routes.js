@@ -43,12 +43,12 @@ router.post('/login', async (req, res) => {
     if (!dbUserData) {
       res
         .status(400)
-        .json({ message: 'Incorrect email or password. Please try again!' });
+        .json({ message: 'Incorrect email or password.' });
       return;
     }
 
     const validPassword = await dbUserData.checkPassword(req.body.password);
-
+    console.log(validPassword);
     if (!validPassword) {
       res
         .status(400)
@@ -56,10 +56,12 @@ router.post('/login', async (req, res) => {
       return;
     }
 
+    console.log("logged in");
+
     // Once the user successfully logs in, set up the sessions variable 'loggedIn'
     req.session.save(() => {
       req.session.loggedIn = true;
-
+      console.log(req.session.loggedIn);
       res
         .status(200)
         .json({ user: dbUserData, message: 'You are now logged in!' });
