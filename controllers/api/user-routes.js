@@ -25,6 +25,6 @@ router.post('/', async (req, res) => {
 });
 
 // Add more user-related routes as needed
-router.post('/login',)
+router.post('/login',);
 
 module.exports = router;
