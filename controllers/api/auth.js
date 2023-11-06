@@ -26,7 +26,7 @@ router.post(
         return res.status(400).json({ errors: errors.array() });
       }
 
-      const { first_name, last_name, email, password } = JSON.parse(req.body);
+      const { first_name, last_name, email, password } = req.body;
 
       // Check if the email is already registered
       const existingUser = await User.findOne({ where: { email } });
@@ -34,15 +34,13 @@ router.post(
         return res.status(400).json({ message: 'Email already registered' });
       }
 
-      // Hash the password
-      const hashedPassword = await bcrypt.hash(password, 10); 
 
       // Create a new user with first_name, last_name, email, and password
       const newUser = await User.create({
         first_name,
         last_name,
         email,
-        password: hashedPassword,
+        password,
       });
 
       res.status(201).json({ message: 'User registered successfully', user: newUser });
