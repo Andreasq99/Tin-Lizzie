@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register your Car!</title>
+</head>
+<body>
 <section class="h-100 gradient-form" style="background-color: #4C4C4C;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -8,54 +16,63 @@
                 <div class="card-body p-md-5 mx-md-4">
   
                   <div class="text-center">
-                    <h4 class="mt-5 mb-5 pb-1">Register for an Account</h4>
+                    <h4 class="mt-5 mb-5 pb-1">Register your vehicle</h4>
                   </div>
                   <p>Please provide the following information:</p>
                   <form>
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                    <input type="text" name="first_name" id="first_name" class="form-control input-sm" placeholder="First Name">
-                            </div>
+                    <input type="text" name="vehicle_make" id="vehicle-make" class="form-control input-sm" placeholder="Vehicle Make">
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <input type="text" name="last_name" id="last_name" class="form-control input-sm" placeholder="Last Name">
+                                <input type="text" name="vehicle_model" id="vehicle-model" class="form-control input-sm" placeholder="Vehicle Model">
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="email" name="email" id="email" class="form-control input-sm" placeholder="Email Address">
+                        <input type="text" name="year" id="year" class="form-control input-sm" placeholder="Year">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="color" id="color" class="form-control input-sm" placeholder="color">
                     </div>
 
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <input type="password" name="password" id="password" class="form-control input-sm" placeholder="Password">
+                                <input type="text" name="vin" id="vin" class="form-control input-sm" placeholder="VIN">
                             </div>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
-                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-sm" placeholder="Confirm Password">
+                                <input type="text" name="price" id="price" class="form-control input-sm" placeholder="Price">
                             </div>
                         </div>
                     </div>
                     <div class="col-xs-6 col-sm-6 col-md-6">
-			    			<div class="form-group">
-			    				<input type="zip" name="zip" id="zip" class="form-control input-sm" placeholder="Zipcode">
+                        <div class="form-group">
+			    			<input type="text" name="condition" id="condition" class="form-control input-sm" placeholder="Condition">
+			    	    </div>
+			    		<div class="form-group">
+			    			<input type="text" name="mileage" id="mileage" class="form-control input-sm" placeholder="Mileage">
+			    	    </div>
+                        <div class="form-group">
+			    			<textarea id="description"></textarea>
 			    	    </div>
 			    	</div>
                     <div class="text-center pt-1 mb-5 pb-1">
                         <button class="btn btn-primary btn-block fa-lg gradient-custom mb-3" id="register-button" type="submit">Register</button>
-                      </div>
-                
+                    </div>
+
                 </form>
   
                 </div>
               </div>
               <div class="col-sm-6 d-flex align-items-center">
-                  <img src="images\TinLizzie Logo1.png" width="750px">
+                  <img src="public\images\TinLizzie Logo1.png" width="750px">
                 </div>
               </div>
             </div>
@@ -64,3 +81,7 @@
       </div>
     </div>
   </section>
+
+  <script src="vehicleRegistration.js"></script>
+</body>
+</html>
