@@ -85,11 +85,3 @@ CREATE TABLE IF NOT EXISTS View (
   FOREIGN KEY (vehicleId) REFERENCES Vehicle(id) ON DELETE CASCADE
 );
 
--- Create the ZipCodes table
-CREATE TABLE IF NOT EXISTS ZipCodes (
-  code VARCHAR(255) NOT NULL PRIMARY KEY,
-  latitude FLOAT NOT NULL,
-  longitude FLOAT NOT NULL,
-  createdAt DATETIME NOT NULL,
-  updatedAt DATETIME NOT NULL
-);
