@@ -6,9 +6,8 @@ const { Love, View, Like, Vehicle } = require('../../models');
 router.post('/api/vehicles/:vehicleId/likes', async (req, res) => {
   try {
     const { vehicleId } = req.params;
-    const { userId } = req.body; // Assuming you have user authentication
+    const { userId } = req.body;
 
-    // Validate user and vehicle existence
     const vehicle = await Vehicle.findByPk(vehicleId);
     if (!vehicle) {
       return res.status(404).json({ error: 'Vehicle not found' });
