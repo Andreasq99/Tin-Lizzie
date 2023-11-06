@@ -65,7 +65,7 @@ const Vehicle = sequelize.define('Vehicle', {
       model: 'user', 
       key: 'id', 
     },
-    vin: faker.vehicle.vin(),
+    
   }, // Corrected placement of closing curly bracket
   // Add more vehicle-specific fields as needed
 },
