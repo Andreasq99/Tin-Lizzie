@@ -3,6 +3,7 @@ const router = express.Router();
 
 // Define a route for the homepage (GET '/')
 router.get('/', (req, res) => {
+
   res.render('homepage', {
     loggedIn: req.session.loggedIn,
   });
