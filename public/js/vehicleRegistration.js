@@ -47,4 +47,4 @@ async function registrationHandler(event) {
 
 document
   .querySelector("#register-button")
-  .addEventListener("submit", registrationHandler);
+  .addEventListener("click", registrationHandler);
