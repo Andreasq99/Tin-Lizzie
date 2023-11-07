@@ -35,6 +35,7 @@ app.set('view engine', 'handlebars');
 
 app.get('/', (req, res) => {
   const loggedIn = req.session.loggedIn || false;
+  console.log(req.session);
   res.render('homepage', { loggedIn });
 });
 
@@ -50,7 +51,9 @@ app.get('/contact', (req, res) => {
 
 app.get('/vehicle-registration', (req, res) => {
   const loggedIn = req.session.loggedIn || false;
-  res.render('vehicle-registration', { loggedIn: true });
+  const userId = req.session.userId;
+  console.log(userId);
+  res.render('vehicle-registration', { loggedIn, userId });
 });
 
 app.use(express.json());
