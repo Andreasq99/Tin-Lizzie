@@ -1,5 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&family=Lora&family=Merriweather:wght@900&display=swap');
+
 body {
     background: #4c4c4c;
+    color: #fff;
+    font-family: 'Lora', serif;
+}
+
+/* Header Container */
+.header {
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    background-color: #333; 
+    color: #fff; 
+    padding: 10px 20px; 
+    height: 150px;
+}
+  
+.logo img {
+    max-width: 250px; 
+    margin-right: 20px; 
+    position: relative;
+}
+  
+
+.menu ul {
+    list-style-type: none; 
+    padding: 0; 
+}
+  
+.menu li {
+    display: inline;
+    margin-right: 20px; 
+}
+  
+.menu a {
+    color: #fff; 
+    text-decoration: none; 
+}
+  
+.menu a:hover {
+    text-decoration: underline; 
+}
+
+.container {
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px;  
+}
+
+h1 {
+    font-family: 'Courgette', cursive;
+    text-shadow: 4px 4px 10px rgba(161,255,199,1);
+}
+
+h2 {
+    font-family: 'Courgette', cursive;
+    color: #a1ffc7;
+    font-size: 50px;
+}
+
+h3 {
+    font-family: 'Merriweather', serif;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+b {
+    color: #a1ffc7;
 }
 .gradient-custom {
     /* fallback for old browsers */
@@ -10,75 +86,36 @@ body {
   
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, rgba(36,35,35,1), rgba(161,255,199,1))
-  }
-    @media (min-width: 768px) {
-    .gradient-form {
-    height: 100vh !important;
+}
+
+.btn-outline {
+    background: linear-gradient(to right, rgba(36,35,35,1), rgba(161,255,199,1)) border-box;
+    color: #fff;
+    border: solid 1px #000;
+    }
+.btn-outline:hover, .btn-outline:active {
+    background: linear-gradient(to right, rgba(36,35,35,1), rgba(161,255,199,1)) border-box;
+    color: #fff!important;
+    border: solid 1px #000;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,0.075);
     }
 
+footer {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 5px;
     }
-    @media (min-width: 769px) {
+
+    
+@media (min-width: 768px) {
+    .gradient-form {
+    height: 100vh !important;
+    }}
+
+@media (min-width: 769px) {
     .gradient-custom {
     border-top-right-radius: .3rem;
     border-bottom-right-radius: .3rem;
-    }
-    }
-
-    .btn-outline {
-        background: linear-gradient(to right, rgba(36,35,35,1), rgba(161,255,199,1)) border-box;
-        color: #fff;
-        border: solid 1px #000;
-    }
-    .btn-outline:hover, .btn-outline:active {
-        background: linear-gradient(to right, rgba(36,35,35,1), rgba(161,255,199,1)) border-box;
-        color: #fff!important;
-        border: solid 1px #000;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,0.075);
-    }
-
-/* Header Container */
-.header {
-    display: flex; 
-    align-items: center; 
-    justify-content: space-between; 
-    background-color: #333; 
-    color: #fff; /
-    padding: 10px 20px; 
-    height: 150px;
-  }
-  
-  .logo img {
-    max-width: 250px; 
-    margin-right: 20px; 
-    position: relative;
-  }
-  
-
-  .menu ul {
-    list-style-type: none; 
-    padding: 0; 
-  }
-  
-  .menu li {
-    display: inline;
-    margin-right: 20px; 
-  }
-  
-
-  .menu a {
-    color: #fff; 
-    text-decoration: none; 
-  }
-  
-
-  .menu a:hover {
-    text-decoration: underline; 
-  }
-
-  .container {
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 20px; 
-    background-color: #fff; 
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-  }
+    }}
