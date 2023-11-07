@@ -48,7 +48,7 @@ const Vehicle = sequelize.define('Vehicle', {
     type: DataTypes.TEXT, 
   },
   type: {
-    type: DataTypes.ENUM('car', 'truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar'),
+    type: DataTypes.ENUM('Car', 'Truck', 'SUV', 'Convertible', 'Sedan', 'Sportscar'),
     allowNull: false,
   },
   updated_at: {

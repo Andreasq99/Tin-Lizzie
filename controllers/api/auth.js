@@ -34,6 +34,7 @@ router.post(
         return res.status(400).json({ message: 'Email already registered' });
       }
 
+
       // Create a new user with first_name, last_name, email, and password
       const newUser = await User.create({
         first_name,
