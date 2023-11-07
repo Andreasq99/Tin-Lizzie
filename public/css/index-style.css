@@ -58,6 +58,7 @@ h2 {
     font-family: 'Courgette', cursive;
     color: #a1ffc7;
     font-size: 50px;
+    text-align: center;
 }
 
 h3 {
@@ -77,6 +78,7 @@ a:hover {
 b {
     color: #a1ffc7;
 }
+
 .gradient-custom {
     /* fallback for old browsers */
     background: #242323;
