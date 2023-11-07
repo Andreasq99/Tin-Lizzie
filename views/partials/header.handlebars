@@ -8,14 +8,14 @@
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
         {{#if loggedIn}}
-             <li><a href="/" id="logout">Logout</a></li>
+             <li id="logout">Logout</>
              <li><a href="/vehicle-registration">Sell Your Car</a></li>
-               <script src="./js/logout.js"></script>
         {{else}}
             <a href="/login">Login</a>
         {{/if}}
       </ul>
     </nav>
   </header>
+  <script src="./js/logout.js"></script>
 </body>
 

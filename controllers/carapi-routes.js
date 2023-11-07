@@ -87,8 +87,8 @@ router.get("/decode/:vin", async (req, res) => {
     )}, rate the coolness of the vehicle on a scale of 1 to 100. Only respond with a whole integer number and do not include any letters in your response. That means no words and only a number.`;
 
     vin = await chat();
-    console.log(vin);
-    return res.json(vehicleData);
+    console.log(parseInt(vin, 10));
+    return res.json(parseInt(vin, 10));
   } catch (error) {
     res.status(500).json({ error: "Internal server error" });
   }
