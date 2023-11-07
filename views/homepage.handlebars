@@ -8,53 +8,19 @@
         <div class="col-12 col-md-8 mb-5">
             <div class="d-flex">
                 <div class="col-md-5 text-center">
-                    {{> category}}
+                    <div class="container">
+                        Total Vehicles: {{vehicles.length}}
+                    <div class="row">
+                        {{#each vehicles}}
+                            <div class="col-md-3">
+                            {{> vehicle-card this}}
+                            {{> beatermeter this}}
+                            </div>
+                        {{/each}}
+                    </div>
+                    </div>
                 </div>
-                {{!-- <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-        <div class="col-12 col-md-8 mb-5">
-            <div class="d-flex">
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-            </div>
-        </div>
-        </div>
-        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-        <div class="col-12 col-md-8 mb-5">
-            <div class="d-flex">
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div>
-                <div class="col-md-5 text-center">
-                    {{> category}}
-                </div> --}}
+ 
             </div>
         </div>
         </div>

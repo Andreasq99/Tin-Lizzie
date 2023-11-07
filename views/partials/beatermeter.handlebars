@@ -10,7 +10,7 @@ src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
     <canvas id="barChart"></canvas>
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const value = {{vehicle.rating}};
+            const value = {{rating}};
             const color = function (value) {
                     if (value >= 80) {
                         return "rgba(75, 192, 192, 1)"; // Green

@@ -33,12 +33,6 @@ const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-app.get('/', (req, res) => {
-  const loggedIn = req.session.loggedIn || false;
-  console.log(req.session);
-  res.render('homepage', { loggedIn });
-});
-
 app.get('/about', (req, res) => {
   const loggedIn = req.session.loggedIn || false;
   res.render('about', { loggedIn: true });
