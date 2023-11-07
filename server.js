@@ -43,6 +43,11 @@ app.get('/contact', (req, res) => {
   res.render('contact', { loggedIn: true });
 });
 
+app.get('/vehicle', (req, res) => {
+  const loggedIn = req.session.loggedIn || false;
+  res.render('vehicle', { loggedIn: true });
+});
+
 app.get('/vehicle-registration', (req, res) => {
   const loggedIn = req.session.loggedIn || false;
   const userId = req.session.userId;
