@@ -9,7 +9,10 @@ const registrationHandler = async (event)=>{
     if(email && password && password===confPassword && first_name && last_name){
         const response = await fetch('/api/auth/register',{
             method: 'POST',
-            body: JSON.stringify({first_name, last_name, email, password})
+            body: JSON.stringify({first_name, last_name, email, password}),
+            headers: {
+                "Content-Type": "application/json",
+              },
         });
 
         if (response.ok){
@@ -18,4 +21,4 @@ const registrationHandler = async (event)=>{
     }
 }
 
-document.querySelector('#register-button').addEventListener('submit',registrationHandler);
+document.querySelector('#register-button').addEventListener('click',registrationHandler);
