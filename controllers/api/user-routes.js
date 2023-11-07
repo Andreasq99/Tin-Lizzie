@@ -39,7 +39,7 @@ router.post('/login', async (req, res) => {
         email: req.body.email,
       },
     });
-
+    console.log('line 42')
     if (!dbUserData) {
       res
         .status(400)
