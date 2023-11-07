@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register your Car!</title>
-</head>
-<body>
 <section class="h-100 gradient-form" style="background-color: #4C4C4C;">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -25,15 +17,16 @@
                             <div class="form-group">
                     <input type="text" name="vehicle_make" id="vehicle-make" class="form-control input-sm" placeholder="Vehicle Make">
                         </div>
+                        <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <div class="form-group">
                                 <input type="text" name="vehicle_model" id="vehicle-model" class="form-control input-sm" placeholder="Vehicle Model">
                             </div>
-                        </div>
+                        </div></div>
                     </div>
 
                     <div class="form-group">
-                        <label for="vehicles">vehicle type:</label>
+                        <label for="vehicles">Vehicle Type:</label>
                         <select name="vehicles" id="type">
                           <option value="Car">Car</option>
                           <option value="Truck">Truck</option>
@@ -47,7 +40,7 @@
 
                     
                     <div class="form-group">
-                        <label for="conditions">condition:</label>
+                        <label for="conditions">Condition:</label>
                         <select name="conditions" id="condition">
                           <option value="New">New</option>
                           <option value="Used">Used</option>
@@ -63,7 +56,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name="color" id="color" class="form-control input-sm" placeholder="color">
+                        <input type="text" name="color" id="color" class="form-control input-sm" placeholder="Color">
                     </div>
 
                     <div class="row">
@@ -78,13 +71,16 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
                     <div class="col-xs-6 col-sm-6 col-md-6">
 			    		<div class="form-group">
 			    			<input type="text" name="mileage" id="mileage" class="form-control input-sm" placeholder="Mileage">
-			    	    </div>
-                        <div class="form-group">
-			    			<textarea id="description"></textarea>
-			    	    </div>
+			    	    </div></div>
+                <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                        
+			    			<textarea id="description" placeholder="Description"></textarea>
+			    	    </div></div></div>
 			    	</div>
                     <div class="text-center pt-1 mb-5 pb-1">
                         <button class="btn btn-primary btn-block fa-lg gradient-custom mb-3" id="register-button">Register</button>
@@ -95,7 +91,7 @@
                 </div>
               </div>
               <div class="col-sm-6 d-flex align-items-center">
-                  <img src="public\images\TinLizzie Logo1.png" width="750px" alt="tinlizzielogo1">
+                  <img src="\images\TinLizzie Logo1.png" width="750px" alt="tinlizzielogo1">
                 </div>
               </div>
             </div>
@@ -111,3 +107,4 @@
   <script src="./js/vehicleRegistration.js"></script>
 </body>
 </html>
+
