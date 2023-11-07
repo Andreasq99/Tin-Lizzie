@@ -1,20 +1,18 @@
-<!-- category.handlebars -->
-<h2>Category</h2>
+<h2>Categorie</h2>
 <div class="container">
   <div class="row">
-    {{#each vehicles}}
-      {{#if (math @index "%" 4 "===" 0)}}
+    Total Vehicles: {{vehicles.length}}
+    {{#if vehicles.length}}
+      {{#each vehicles}}
+        <div class="col-md-3">
+          {{> vehicle-card this}}
         </div>
-        <div class="row">
-      {{/if}}
-      <div class="col-md-3">
-        {{> vehicle-card}}
-      </div>
-      {{#if (math @index "%" 4 "===" 3) "&&" @index "!==" 0}}
-        </div>
-        <div class="row">
-      {{/if}}
-    {{/each}}
+      {{/each}}
+    {{else}}
+      <p>No vehicles available.</p>
+    {{/if}}
   </div>
 </div>
+
+
 

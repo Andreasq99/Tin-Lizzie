@@ -121,3 +121,38 @@ footer {
     border-top-right-radius: .3rem;
     border-bottom-right-radius: .3rem;
     }}
+
+.card {
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+    margin-bottom: 20px; 
+    background-color: white; 
+    transition: transform 0.2s ease-in-out; 
+    margin-bottom: 30px;
+    background-color: #333;
+}
+
+
+.card:hover {
+    transform: translateY(-5px); 
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card-content {
+    padding: 10px;
+    margin-bottom: 10px; 
+}
+
+.card-img {
+    border-radius: 10px 10px 0 0; 
+    width: 100%; 
+    height: auto; 
+}
+
+.card-info {
+    margin: 5px 0; 
+}

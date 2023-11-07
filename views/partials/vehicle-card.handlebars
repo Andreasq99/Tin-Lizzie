@@ -1,7 +1,11 @@
 <section class="card">
-    <a href="/vehicle/{{id}}">
-        <img class="card-img" src="{{images.[0].imagePath}}" alt="{{images.[0].description}}">
-        <p>{{year}} {{model}}, {{price}}</p>
-        <p style=>{{condition}},  {{mileage}} miles</p>
+
+    <a href="/vehicle/{{this.id}}">
+        <img class="card-img" src="{{this.imagePath}}" alt="{{this.description}}">
+        <p>{{this.year}} {{this.make}} {{this.model}}</p>
+            <h4>${{this.price}}</h4>
+        <p style=>{{this.condition}}</p>
+        <p>{{> beatermeter}}</p>
+
     </a>
 </section>
