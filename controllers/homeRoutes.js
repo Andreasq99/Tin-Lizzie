@@ -1,12 +1,31 @@
 const express = require('express');
 const router = express.Router();
+const {Vehicle, VehicleImage} = require('../models');
 //const withAuth = require('../utils/loggedInAuth');
 
 // Define a route for the homepage (GET '/')
-router.get('/', (req, res) => {
-
+router.get('/', async (req, res) => {
+  const dbVehiclesData = await Vehicle.findAll({
+    order: [['price', 'DESC']],
+    attributes: ['year','model','price','condition','mileage'],
+    include: [
+      {
+      model: VehicleImage,
+      attributes: [
+        'imagePath',
+        'description',
+        ]
+      }
+    ],
+  });
+  const dbVehicles = dbVehiclesData;
+  const vehicles = [];
+  for(i=0;i<12;i++){
+    vehicles.push(dbVehicles[i]);
+  }
   res.render('homepage', {
-    loggedIn: req.session.loggedIn,
+    vehicles,
+    loggedIn: req.session.loggedIn
   });
 });
 
