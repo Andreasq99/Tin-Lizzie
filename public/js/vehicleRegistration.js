@@ -1,3 +1,5 @@
+//const vinDecoder = require('../../controllers/carapi-routes');
+
 async function registrationHandler(event) {
   event.preventDefault();
 
@@ -15,6 +17,22 @@ async function registrationHandler(event) {
   console.log(color);
   const vin = document.querySelector("#vin").value;
   console.log(vin);
+  let rating;
+  try {
+    const response = await fetch(`/carapi/decode/${vin}`, {
+      method: "GET",
+    });
+
+    if (response.ok) {
+      rating = await response.json();
+      console.log("Rating:", rating);
+    } else {
+      console.log("Rating request failed with status:", response.status);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  console.log(rating);
   const price = document.querySelector("#price").value;
   console.log(price);
   const condition = document.querySelector("#condition").value;
@@ -35,6 +53,7 @@ async function registrationHandler(event) {
         year,
         color,
         vin,
+        rating,
         price,
         condition,
         mileage,
@@ -44,6 +63,7 @@ async function registrationHandler(event) {
         "Content-Type": "application/json",
       },
     });
+    console.log(response);
   } catch (err) {
     console.error(err);
     window.prompt('Please enter in all parts of the registration form.')
