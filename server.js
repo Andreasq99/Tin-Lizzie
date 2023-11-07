@@ -25,6 +25,26 @@ const hbs = exphbs.create({ helpers });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
+app.get('/', (req, res) => {
+  const loggedIn = req.session.loggedIn || false;
+  res.render('homepage', { loggedIn });
+});
+
+app.get('/about', (req, res) => {
+  const loggedIn = req.session.loggedIn || false;
+  res.render('about', { loggedIn: true });
+});
+
+app.get('/contact', (req, res) => {
+  const loggedIn = req.session.loggedIn || false;
+  res.render('contact', { loggedIn: true });
+});
+
+app.get('/vehicle-registration', (req, res) => {
+  const loggedIn = req.session.loggedIn || false;
+  res.render('vehicle-registration', { loggedIn: true });
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));

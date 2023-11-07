@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-
+const withAuth = require('../utils/loggedInAuth');
 // Define a route for the homepage (GET '/')
-router.get('/', (req, res) => {
+router.get('/', async (req, res) => {
 
   res.render('homepage', {
     loggedIn: req.session.loggedIn,
@@ -23,6 +23,10 @@ router.get('/about',(req,res)=>{
 
 router.get('/contact',(req,res)=>{
   res.render('contact');
+});
+
+router.get('/vehicle-registration', (req,res)=>{
+  res.render('vehicle-registration');
 });
 
 router.get('/vehicle/:id', async (req,res)=>{
