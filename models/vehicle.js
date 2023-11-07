@@ -65,8 +65,7 @@ const Vehicle = sequelize.define('Vehicle', {
       model: 'user', 
       key: 'id', 
     },
-  }, // Corrected placement of closing curly bracket
-  // Add more vehicle-specific fields as needed
+  }, 
 },
 {
   sequelize,
@@ -75,6 +74,7 @@ const Vehicle = sequelize.define('Vehicle', {
   underscored: true,
   modelName: 'vehicle',
 }
+
 );
 
 module.exports = Vehicle;

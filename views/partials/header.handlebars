@@ -1,33 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ pageTitle }}</title>
-    <link rel="stylesheet" href="/styles.css"> <!-- Replace with your CSS file path -->
-</head>
-<body>
-    <header>
-<h1>Tin Lizze</h1>
-    </header>
-    <main>
-
-<nav>
-    <ul>
+  <header class="header">
+    <div class="logo">
+      <img src="images/TinLizzie 250x250 logo.png" alt="Logo">
+    </div>
+    <nav class="menu">
+      <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/contact">Contact</a></li>
         {{#if loggedIn}}
-        
-    <button id="logout">Logout</button>
-    {{else}}
-    <a href="/login">Login</a>
-    {{/if}}
-    </ul>
-</nav>
-    </main>
-      {{#if loggedIn}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-    </body>
+             <button id="logout">Logout</button>
+        {{else}}
+            <a href="/login">Login</a>
+        {{/if}}
+      </ul>
+    </nav>
+  </header>
+</body>
 
