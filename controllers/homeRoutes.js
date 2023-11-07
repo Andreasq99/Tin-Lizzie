@@ -49,6 +49,10 @@ router.get('/contact',(req,res)=>{
   res.render('contact');
 });
 
+router.get('/vehicle-registration', (req,res)=>{
+  res.render('vehicle-registration');
+});
+
 router.get('/vehicle/:id', async (req,res)=>{
   try{
     const dbVehicleData = await Vehicle.findByPk(req.params.id);
