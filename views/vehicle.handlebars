@@ -1,0 +1,15 @@
+<div class="product-container">
+        <div class="product-image">
+            {{> vehicle-carousel vehicleImages}}
+        </div>
+        <div class="product-details">
+            <h1>{{vehicle.model}}</h1>
+            <p>Price: ${{vehicle.price}}</p>
+            <p>Condition: {{vehicle.condition}}</p>
+            <p>Mileage: {{vehicle.mileage}}</p>
+            <p>Make: {{vehicle.make}}</p>
+            <p>{{> beatermeter}}</p>
+            <button class="buy-button">Buy Now</button>
+        </div>
+</div>
+

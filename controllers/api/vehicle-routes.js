@@ -23,16 +23,53 @@ router.post('/', async (req, res) => {
 });
 
 
-router.get('/:id', async (req,res)=>{
-  try{
-    const dbVehicleData = await Vehicle.findByPk(req.params.id);
-    const vehicle = dbVehicleData.get({plain:true});
-    res.send(vehicle);
-  } catch(err){
-    res.status(400).json(err);
+// router.get('/:id', async (req,res)=>{
+//   try{
+//     const dbVehicleData = await Vehicle.findByPk(req.params.id);
+//     const vehicle = dbVehicleData.get({plain:true});
+//     res.send(vehicle);
+//   } catch(err){
+//     res.status(400).json(err);
+//   }
+// });
+
+router.get('/:id', async (req, res) => {
+  try {
+
+    const vehicleId = req.params.id;
+    if (!/^\d+$/.test(vehicleId)) {
+      return res.render('error', { message: 'Invalid vehicle ID' });
+    }
+    const vehicle = await Vehicle.findByPk(vehicleId, {
+      include: [
+        {
+          model: VehicleImage,
+          attributes: ['imagePath', 'description'],
+        },
+      ],
+      attributes: [
+        'id',
+        'year',
+        'make',
+        'model',
+        'price',
+        'condition',
+        'mileage',
+        'rating', 
+      ],
+    });
+
+    if (!vehicle) {
+
+      return res.render('error', { message: 'Vehicle not found' });
+    }
+   res.render('vehicle', { vehicle });
+  } catch (error) {
+
+    console.error('Error fetching vehicle data:', error);
+    res.render('error', { message: 'Internal Server Error' });
   }
 });
-
 router.get('/card/:id', async (req,res)=>{
   try{
     const dbVehicleData = await Vehicle.findByPk(req.params.id, {
@@ -53,6 +90,6 @@ router.get('/card/:id', async (req,res)=>{
     response.status(400).json(err);
   }
 });
-// Add more vehicle-related routes as needed
+
 
 module.exports = router;
