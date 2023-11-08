@@ -6,7 +6,12 @@ body {
     font-family: 'Lora', serif;
 }
 
-/* Header Container */
+#incorrect-text {
+    display: none;
+    color: red;
+    text-align: center;
+}
+
 .header {
     display: flex; 
     align-items: center; 
