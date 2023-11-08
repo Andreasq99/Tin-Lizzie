@@ -1,11 +1,72 @@
 <section class="card">
-
-    <a href="/vehicle/{{this.id}}">
+    <p href="/vehicle/{{this.id}}">
         <img class="card-img" src="{{this.imagePath}}" alt="{{this.description}}">
         <p>{{this.year}} {{this.make}} {{this.model}}</p>
-            <h4>${{this.price}}</h4>
-        <p style=>{{this.condition}}</p>
-        <p>{{> beatermeter}}</p>
-
+        <h4>${{this.price}}</h4>
+        <p>{{this.condition}}</p>
+        <canvas id="barChart{{this.price}}"></canvas>
     </a>
+
+    <script>
+        function renderChart(value) {
+            const color = function (value) {
+                if (value >= 80) {
+                    return "rgba(75, 192, 192, 1)"; // Green
+                } else if (value >= 50 && value < 80) {
+                    return "rgba(255, 206, 86, 1)"; // Yellow
+                } else {
+                    return "rgba(255, 99, 71, 1)"; // Red
+                }
+            }
+
+            function labelDecider(value) {
+                if (value >= 80) {
+                    return "Hot Rod!";
+                } else if (value >= 50 && value < 80) {
+                    return "Jalopy";
+                } else {
+                    return "Hurts my eyes!";
+                }
+            }
+
+            const chartData = {
+                labels: [labelDecider(value)],
+                datasets: [
+                    {
+                        data: [value],
+                        backgroundColor: color(value),
+                        borderColor: color(value),
+                        borderWidth: 1
+                    }
+                ]
+            };
+
+            const chartCanvas = document.getElementById("barChart{{this.price}}");
+
+            new Chart(chartCanvas, {
+                type: "horizontalBar",
+                data: chartData,
+                options: {
+                    title: {
+                        display: true,
+                        text: "Beater Meter"
+                    },
+                    legend: {
+                        display: false
+                    },
+                    scales: {
+                        xAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                }
+                            }
+                        ]
+                    }
+                }
+            });
+        }
+        renderChart({{this.rating}});
+    </script>
 </section>
