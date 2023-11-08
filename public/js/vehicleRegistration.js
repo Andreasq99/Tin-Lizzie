@@ -19,6 +19,30 @@ async function registrationHandler(event) {
   console.log(vin);
   let rating;
   try {
+    const response = await fetch(`/carapi/decode/${vin}`, {
+      method: "GET",
+    });
+
+    if (response.ok) {
+      rating = await response.json();
+      console.log("Rating:", rating);
+    } else {
+      console.log("status:", response.status);
+    }
+  } catch (err) {
+    console.log(err);
+  }
+  console.log(rating);
+  const price = document.querySelector("#price").value;
+  console.log(price);
+  const condition = document.querySelector("#condition").value;
+  console.log(condition);
+  const mileage = document.querySelector("#mileage").value;
+  console.log(mileage);
+  const description = document.querySelector("#description").value;
+  console.log(description);
+
+  try {
     const response = await fetch("/api/vehicles", {
       method: "POST",
       body: JSON.stringify({
@@ -41,7 +65,6 @@ async function registrationHandler(event) {
     });
 
     if (response.ok) {
-      // Vehicle record successfully created
       const vehicleData = await response.json();
       console.log("Vehicle Data:", vehicleData);
 
