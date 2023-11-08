@@ -47,7 +47,7 @@ async function seedData() {
         year: faker.number.int({ min: 1990, max: 2023 }),
         vin: faker.vehicle.vin(),
         rating: faker.number.int({ min: 0, max: 100 }),
-        price: faker.finance.amount({ min: 100, max: 100000 }),
+        price: faker.finance.amount({ min: 100, max: 5000 }),
         mileage: faker.number.int({ min: 0, max: 500000 }),
         color: faker.vehicle.color(),
         condition: faker.helpers.arrayElement(['New', 'Used', 'Certified Pre-Owned', 'Does Not Run', 'Parts Only']),
@@ -72,5 +72,5 @@ async function seedData() {
     console.error('Error seeding data:', error);
   }
 }
-// Call the seedData function
+clearTables();
 seedData();
