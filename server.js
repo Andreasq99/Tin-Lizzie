@@ -51,8 +51,12 @@ app.get('/vehicle', (req, res) => {
 app.get('/vehicle-registration', (req, res) => {
   const loggedIn = req.session.loggedIn || false;
   const userId = req.session.userId;
+  if (userId === undefined) {
+    res.render('./login', { loggedIn });
+  } else {
+    res.render('vehicle-registration', { loggedIn, userId });
+  }
   console.log(userId);
-  res.render('vehicle-registration', { loggedIn, userId });
 });
 
 app.use(express.json());
