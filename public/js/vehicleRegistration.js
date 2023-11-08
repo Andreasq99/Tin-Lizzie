@@ -66,29 +66,9 @@ async function registrationHandler(event) {
 
     if (response.ok) {
       const vehicleData = await response.json();
-      console.log("Vehicle Data:", vehicleData);
-
-     
-      const vehicleImageResponse = await fetch("/api/vehicleimages", {
-        method: "POST",
-        body: JSON.stringify({
-          vehicleId: vehicleData.id, 
-          imagePath: "https://www.corvetteblogger.com/images/content/2021/042421_6d.jpg", 
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (vehicleImageResponse.ok) {
-        // Vehicle image record successfully created
-        console.log("Vehicle Image Record Created");
-        document.location.replace("/");
-      } else {
-        console.log("Vehicle Image Record creation failed with status:", vehicleImageResponse.status);
-      }
+      document.location.replace("./");
     } else {
-      console.log("Vehicle creation failed with status:", response.status);
+      console.log("status:", response.status);
     }
   } catch (err) {
     console.error(err);
