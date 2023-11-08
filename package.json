@@ -12,6 +12,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@faker-js/faker": "^8.2.0",
         "axios": "^1.6.0",
         "bcrypt": "^5.0.0",
         "bootstrap": "^5.3.2",
@@ -28,10 +29,6 @@
         "nodemon": "^3.0.1",
         "openai": "^4.14.2",
         "sequelize": "^6.33.0",
-        "sequelize-cli": "^6.6.1",
-        "@faker-js/faker": "^8.2.0"
-    },
-    "devDependencies": {
-        "@faker-js/faker": "^8.2.0"
+        "sequelize-cli": "^6.6.1"
     }
 }

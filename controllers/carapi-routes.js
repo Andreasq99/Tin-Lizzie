@@ -72,7 +72,7 @@ async function chat() {
     return extractedNumber;
   } catch (err) {
     console.error(`An error occurred during interaction with GPT-3: ${err}`);
-    throw err;
+    throw err;  
   }
 }
 
