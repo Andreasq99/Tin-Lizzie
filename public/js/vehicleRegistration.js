@@ -19,30 +19,6 @@ async function registrationHandler(event) {
   console.log(vin);
   let rating;
   try {
-    const response = await fetch(`/carapi/decode/${vin}`, {
-      method: "GET",
-    });
-
-    if (response.ok) {
-      rating = await response.json();
-      console.log("Rating:", rating);
-    } else {
-      console.log("Rating request failed with status:", response.status);
-    }
-  } catch (err) {
-    console.log(err);
-  }
-  console.log(rating);
-  const price = document.querySelector("#price").value;
-  console.log(price);
-  const condition = document.querySelector("#condition").value;
-  console.log(condition);
-  const mileage = document.querySelector("#mileage").value;
-  console.log(mileage);
-  const description = document.querySelector("#description").value;
-  console.log(description);
-
-  try {
     const response = await fetch("/api/vehicles", {
       method: "POST",
       body: JSON.stringify({
@@ -63,7 +39,34 @@ async function registrationHandler(event) {
         "Content-Type": "application/json",
       },
     });
-    console.log(response);
+
+    if (response.ok) {
+      // Vehicle record successfully created
+      const vehicleData = await response.json();
+      console.log("Vehicle Data:", vehicleData);
+
+     
+      const vehicleImageResponse = await fetch("/api/vehicleimages", {
+        method: "POST",
+        body: JSON.stringify({
+          vehicleId: vehicleData.id, 
+          imagePath: "https://www.corvetteblogger.com/images/content/2021/042421_6d.jpg", 
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (vehicleImageResponse.ok) {
+        // Vehicle image record successfully created
+        console.log("Vehicle Image Record Created");
+        document.location.replace("/");
+      } else {
+        console.log("Vehicle Image Record creation failed with status:", vehicleImageResponse.status);
+      }
+    } else {
+      console.log("Vehicle creation failed with status:", response.status);
+    }
   } catch (err) {
     console.error(err);
     window.prompt('Please enter in all parts of the registration form.')
